@@ -1,0 +1,278 @@
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* =========================
+   VARIABLES
+========================= */
+
+:root {
+    --bg-main: #020403;
+    --bg-secondary: #071a16;
+    --card-bg: #0d2c24;
+
+    --green-accent: #22c55e;
+
+    --text-main: #e6f2ef;
+    --text-muted: #9fb3ac;
+
+    --border: rgba(34, 197, 94, 0.2);
+
+    /* SPACING SCALE */
+    --space-xs: 8px;
+    --space-sm: 16px;
+    --space-md: 24px;
+    --space-lg: 40px;
+    --space-xl: 80px;
+}
+
+/* =========================
+   BASE
+========================= */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at top, #0b2a22, var(--bg-main));
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+main {
+    padding: var(--space-lg);
+}
+
+/* =========================
+   TYPOGRAPHY
+========================= */
+
+h1 {
+    font-size: 2.6rem;
+    margin-bottom: var(--space-sm);
+}
+
+h2 {
+    font-size: 1.6rem;
+    margin-bottom: var(--space-sm);
+}
+
+h3 {
+    font-size: 1.2rem;
+    margin-bottom: var(--space-xs);
+}
+
+p {
+    margin-bottom: var(--space-sm);
+    color: var(--text-muted);
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: var(--space-md) var(--space-xl);
+    border-bottom: 1px solid var(--border);
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--green-accent);
+}
+
+/* NAV */
+
+.navbar ul {
+    display: flex;
+    gap: var(--space-md);
+    list-style: none;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: var(--text-muted);
+    position: relative;
+}
+
+.navbar a:hover {
+    color: var(--green-accent);
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    text-align: center;
+    padding: var(--space-xl) var(--space-md);
+    max-width: 800px;
+    margin: auto;
+}
+
+.hero p {
+    max-width: 600px;
+    margin: var(--space-sm) auto var(--space-md);
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.buttons {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: center;
+    margin-top: var(--space-md);
+}
+
+.btn-primary,
+.btn-secondary {
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background: var(--green-accent);
+    color: #02110d;
+}
+
+.btn-secondary {
+    border: 1px solid var(--green-accent);
+    color: var(--green-accent);
+}
+
+/* =========================
+   GRID HOME
+========================= */
+
+.home-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+}
+
+.home-card {
+    padding: var(--space-md);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--card-bg);
+}
+
+.home-card a {
+    margin-top: var(--space-sm);
+    display: inline-block;
+}
+
+/* =========================
+   CTA
+========================= */
+
+.home-cta {
+    text-align: center;
+    margin-top: var(--space-xl);
+}
+
+/* =========================
+   CARDS GLOBAL
+========================= */
+
+.card,
+.contact-box,
+.about-box {
+    padding: var(--space-md);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--card-bg);
+
+    margin-bottom: var(--space-md);
+}
+
+/* =========================
+   SKILLS
+========================= */
+
+.skill {
+    margin-bottom: var(--space-sm);
+}
+
+.bar {
+    margin-top: var(--space-xs);
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact-page {
+    max-width: 1100px;
+    margin: auto;
+}
+
+.contact-hero {
+    margin-bottom: var(--space-lg);
+}
+
+.contact-grid {
+    display: flex;
+    gap: var(--space-lg);
+}
+
+.contact-text,
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.about-page {
+    max-width: 1100px;
+    margin: auto;
+}
+
+.about-grid {
+    display: flex;
+    gap: var(--space-lg);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+    .home-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-grid,
+    .about-grid {
+        flex-direction: column;
+    }
+
+    .header {
+        flex-direction: column;
+        gap: var(--space-sm);
+    }
+
+    main {
+        padding: var(--space-md);
+    }
+}
+
