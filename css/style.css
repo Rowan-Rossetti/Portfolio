@@ -25,7 +25,6 @@
 
     --border: rgba(34, 197, 94, 0.2);
 
-    /* SPACING SCALE */
     --space-xs: 8px;
     --space-sm: 16px;
     --space-md: 24px;
@@ -80,7 +79,6 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     padding: var(--space-md) var(--space-xl);
     border-bottom: 1px solid var(--border);
 }
@@ -97,12 +95,14 @@ p {
     display: flex;
     gap: var(--space-md);
     list-style: none;
+    align-items: center;
 }
 
 .navbar a {
     text-decoration: none;
     color: var(--text-muted);
     position: relative;
+    white-space: nowrap; /* 🔥 empêche "À propos" de casser */
 }
 
 .navbar a:hover {
@@ -196,7 +196,6 @@ p {
     border-radius: 12px;
     border: 1px solid var(--border);
     background: var(--card-bg);
-
     margin-bottom: var(--space-md);
 }
 
@@ -274,5 +273,17 @@ p {
     main {
         padding: var(--space-md);
     }
+}
+
+/* 🔥 FIX MOBILE NAV */
+
+@media (max-width: 600px) {
+
+    .navbar ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
 }
 
