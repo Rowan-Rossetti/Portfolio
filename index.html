@@ -3,134 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta name="description" content="Portfolio de Rowan Rossetti, développeur frontend spécialisé dans les interfaces modernes et performantes.">
-
-    <title>Portfolio | Rowan Rossetti</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <meta name="description" content="Portfolio de Rowan Rossetti, développeur web. Projets, compétences et contact.">
+    <title>Accueil | Rowan Rossetti</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
 </head>
-
 <body>
 
 <header class="header">
-    <h1 class="logo">Rowan Rossetti</h1>
+    <div class="container">
+        <div class="logo">
+            <a href="./index.html">Rowan Rossetti</a>
+        </div>
 
-    <nav class="navbar" aria-label="Navigation principale">
-        <ul>
-            <li><a href="./index.html">Accueil</a></li>
-            <li><a href="./pages/about_me.html">À propos</a></li>
-            <li><a href="./pages/contact.html">Contact</a></li>
-            <li>
-                <a href="./assets/files/CV Rowan Rossetti.pdf" target="_blank" rel="noopener noreferrer">
-                    CV
-                </a>
-            </li>
-        </ul>
-    </nav>
+        <nav class="nav" aria-label="Navigation principale">
+            <ul>
+                <li><a href="./index.html" class="active">Accueil</a></li>
+                <li><a href="./pages/about_me.html">À propos</a></li>
+                <li><a href="./pages/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="actions">
+            <a href="./assets/files/CV Rowan Rossetti.pdf" target="_blank" rel="noopener" class="btn btn-secondary">
+                CV
+            </a>
+        </div>
+    </div>
 </header>
 
 <main>
 
-    <!-- HERO FULL WIDTH -->
     <section class="hero">
-
-        <div class="hero-content">
-            <h1>Rowan Rossetti</h1>
-            <h2>Développeur Frontend</h2>
-
+        <div class="container">
+            <h1>Développeur web</h1>
             <p>
-                Je conçois des interfaces modernes, performantes et centrées sur l’utilisateur,
-                avec une attention particulière aux détails et à l’expérience.
+                Je conçois et développe des interfaces modernes, performantes et accessibles.
+                Mon objectif est de créer des expériences claires, efficaces et orientées utilisateur.
             </p>
 
-            <div class="buttons">
-                <a href="./pages/contact.html" class="btn-primary">Me contacter</a>
-                <a href="./assets/files/CV Rowan Rossetti.pdf" class="btn-secondary" target="_blank">Voir mon CV</a>
+            <div class="hero-actions">
+                <a href="./pages/about_me.html" class="btn btn-primary">Découvrir mon profil</a>
+                <a href="./pages/contact.html" class="btn btn-outline">Me contacter</a>
             </div>
         </div>
-
     </section>
 
-    <!-- SECTION GRID -->
-    <section class="home-grid">
-
-        <!-- ABOUT -->
-        <article class="home-card">
-            <h2>À propos</h2>
-            <p>
-                Développeur frontend passionné par la création d’interfaces élégantes et fluides.
-                J’accorde une grande importance à la qualité du code et à l’expérience utilisateur.
-            </p>
-            <a href="./pages/about_me.html">En savoir plus</a>
-        </article>
-
-        <!-- PARCOURS -->
-        <article class="home-card">
-            <h2>Parcours</h2>
-            <p>
-                Formation en développement web accompagnée de projets personnels
-                permettant de consolider mes compétences techniques.
-            </p>
-        </article>
-
-        <!-- SKILLS -->
-        <article class="home-card">
+    <section class="skills">
+        <div class="container">
             <h2>Compétences</h2>
 
-            <div class="skill">
-                <p>HTML</p>
-                <div class="bar"><span class="html"></span></div>
-            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>Frontend</h3>
+                    <ul>
+                        <li>HTML5 / CSS3</li>
+                        <li>JavaScript</li>
+                        <li>Responsive design</li>
+                        <li>Accessibilité</li>
+                    </ul>
+                </div>
 
-            <div class="skill">
-                <p>CSS</p>
-                <div class="bar"><span class="css"></span></div>
-            </div>
+                <div class="card">
+                    <h3>Backend</h3>
+                    <ul>
+                        <li>Node.js</li>
+                        <li>API REST</li>
+                        <li>Bases de données</li>
+                    </ul>
+                </div>
 
-            <div class="skill">
-                <p>JavaScript</p>
-                <div class="bar"><span class="js"></span></div>
+                <div class="card">
+                    <h3>Outils</h3>
+                    <ul>
+                        <li>Git / GitHub</li>
+                        <li>VS Code</li>
+                        <li>Figma</li>
+                    </ul>
+                </div>
             </div>
-
-            <div class="skill">
-                <p>PHP</p>
-                <div class="bar"><span class="js"></span></div>
-            </div>
-
-            <div class="skill">
-                <p>SQL</p>
-                <div class="bar"><span class="js"></span></div>
-            </div>
-
-            <div class="skill">
-                <p>AngularCLI (Typescript)</p>
-                <div class="bar"><span class="js"></span></div>
-            </div>
-
-            <div class="skill">
-                <p>VueJs</p>
-                <div class="bar"><span class="js"></span></div>
-            </div>
-
-            <div class="skill">
-                <p>GitHub</p>
-                <div class="bar"><span class="js"></span></div>
-            </div>
-        </article>
-
+        </div>
     </section>
 
-    <!-- CTA FINAL -->
-    <section class="home-cta">
-        <h2>Disponible pour de nouveaux projets</h2>
-        <p>Ouvert aux opportunités freelance, collaborations et CDI.</p>
-        <a href="./pages/contact.html" class="btn-primary">Entrer en contact</a>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Travaillons ensemble</h2>
+            <p>
+                Vous avez un projet ou une opportunité ? Je suis disponible pour en discuter.
+            </p>
+            <a href="./pages/contact.html" class="btn btn-primary">Entrer en contact</a>
+        </div>
     </section>
 
 </main>
 
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2026 Rowan Rossetti</p>
+    </div>
+</footer>
+
 </body>
 </html>
- 

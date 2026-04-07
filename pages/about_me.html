@@ -3,111 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- SEO -->
-    <meta name="description" content="À propos de Rowan Rossetti, développeur frontend. Compétences, objectifs et disponibilité.">
-
+    <meta name="description" content="En savoir plus sur Rowan Rossetti, développeur web. Parcours, compétences et objectifs.">
     <title>À propos | Rowan Rossetti</title>
-
-    <!-- CSS -->
     <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
 <header class="header">
-    <h1 class="logo">Rowan Rossetti</h1>
+    <div class="container">
+        <div class="logo">
+            <a href="../index.html">Rowan Rossetti</a>
+        </div>
 
-    <nav class="navbar" aria-label="Navigation principale">
-        <ul>
-            <li><a href="../index.html">Accueil</a></li>
-            <li><a href="../pages/about_me.html">À propos</a></li>
-            <li><a href="../pages/contact.html">Contact</a></li>
-            <li>
-                <a href="../assets/files/CV Rowan Rossetti.pdf" target="_blank" rel="noopener noreferrer">
-                    CV
-                </a>
-            </li>
-        </ul>
-    </nav>
+        <nav class="nav" aria-label="Navigation principale">
+            <ul>
+                <li><a href="../index.html">Accueil</a></li>
+                <li><a href="./about_me.html" class="active">À propos</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="actions">
+            <a href="../assets/files/CV Rowan Rossetti.pdf" target="_blank" rel="noopener" class="btn btn-secondary">
+                CV
+            </a>
+        </div>
+    </div>
 </header>
 
 <main>
 
-<section class="about-page">
+    <section class="about-hero">
+        <div class="container">
+            <h1>À propos de moi</h1>
+            <p>
+                Développeur web, je m’intéresse à la conception d’interfaces modernes, performantes et accessibles.
+                Je cherche à créer des expériences simples, efficaces et centrées sur l’utilisateur.
+            </p>
+        </div>
+    </section>
 
-    <!-- HEADER -->
-    <div class="about-header">
-        <h1>À propos de moi</h1>
-        <p>
-            Développeur frontend passionné, spécialisé dans la création d’interfaces modernes,
-            performantes et centrées sur l’utilisateur.
-        </p>
-    </div>
+    <section class="about-content">
+        <div class="container grid-2">
 
-    <!-- GRID -->
-    <div class="about-grid">
-
-        <!-- LEFT -->
-        <section class="about-info">
-
-            <article class="about-box">
-                <h3>Contact</h3>
-                <p>Email : <a href="mailto:rowanrossetti@gmail.com">rowanrossetti@gmail.com</a></p>
-                <p>Téléphone : <a href="tel:+32491249189">+32 491 24 91 89</a></p>
-                <p>Localisation : Belgique</p>
-            </article>
-
-            <article class="about-box">
-                <h3>Disponibilité</h3>
+            <div class="about-text">
+                <h2>Mon parcours</h2>
                 <p>
-                    Disponible immédiatement pour des missions freelance,
-                    collaborations ou opportunités professionnelles (CDI).
+                    Je me forme au développement web en travaillant sur des projets concrets et en approfondissant
+                    les technologies essentielles du web moderne. Mon approche est basée sur la pratique,
+                    l’amélioration continue et la compréhension des bonnes pratiques.
                 </p>
-            </article>
 
-        </section>
+                <p>
+                    Je m’intéresse autant à la partie technique qu’à l’expérience utilisateur, avec une attention
+                    particulière portée à la clarté des interfaces et à la performance.
+                </p>
 
-        <!-- RIGHT -->
-        <section class="about-extra">
+                <h2>Objectifs</h2>
+                <p>
+                    Mon objectif est de rejoindre un environnement professionnel où je pourrai contribuer à des projets
+                    concrets, continuer à progresser et développer des solutions utiles et bien conçues.
+                </p>
+            </div>
 
-            <article class="about-box">
-                <h3>Réseaux</h3>
-                <div class="about-links">
-                    <a href="https://www.linkedin.com/in/rowan-rossetti-68b3292a2/" target="_blank" rel="noopener noreferrer">
-                        LinkedIn
-                    </a>
-                    <a href="https://github.com/Rowan-Rossetti" target="_blank" rel="noopener noreferrer">
-                        GitHub
-                    </a>
-                </div>
-            </article>
+            <div class="about-details">
+                <h2>Informations</h2>
 
-            <article class="about-box">
-                <h3>Types de projets</h3>
-                <ul>
-                    <li>Création de sites web</li>
-                    <li>Refonte UI / UX</li>
-                    <li>Intégration HTML / CSS</li>
-                    <li>Animations JavaScript</li>
+                <ul class="info-list">
+                    <li><strong>Nom :</strong> Rowan Rossetti</li>
+                    <li><strong>Localisation :</strong> Belgique</li>
+                    <li><strong>Spécialité :</strong> Développement web</li>
+                    <li><strong>Statut :</strong> Disponible</li>
                 </ul>
-            </article>
 
-            <article class="about-box">
-                <h3>Objectif</h3>
-                <p>
-                    Concevoir des interfaces élégantes, performantes et intuitives,
-                    offrant une expérience utilisateur fluide et moderne.
-                </p>
-            </article>
+                <h2>Technologies</h2>
 
-        </section>
+                <ul class="skills-list">
+                    <li>HTML / CSS</li>
+                    <li>JavaScript</li>
+                    <li>Responsive design</li>
+                    <li>Git / GitHub</li>
+                    <li>Node.js</li>
+                </ul>
+            </div>
 
-    </div>
+        </div>
+    </section>
 
-</section>
+    <section class="approach">
+        <div class="container">
+            <h2>Ma façon de travailler</h2>
+
+            <div class="grid">
+
+                <div class="card">
+                    <h3>Clarté</h3>
+                    <p>
+                        Je privilégie des interfaces simples, compréhensibles et efficaces.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>Performance</h3>
+                    <p>
+                        J’accorde de l’importance à la rapidité et à l’optimisation des applications.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>Qualité</h3>
+                    <p>
+                        Je m’efforce d’écrire un code propre, maintenable et évolutif.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Travaillons ensemble</h2>
+            <p>
+                Si vous souhaitez en savoir plus ou discuter d’un projet, n’hésitez pas à me contacter.
+            </p>
+            <a href="./contact.html" class="btn btn-primary">
+                Me contacter
+            </a>
+        </div>
+    </section>
 
 </main>
+
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2026 Rowan Rossetti</p>
+    </div>
+</footer>
 
 </body>
 </html>
