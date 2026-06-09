@@ -1,312 +1,321 @@
-:root {
-    --green-dark: #0f2a1d;
-    --green: #1f5c3a;
-    --green-light: #2e7a4e;
-    --silver: #c0c0c0;
-    --silver-light: #e5e5e5;
-    --black: #050505;
-    --text: #dcdcdc;
-    --radius: 10px;
+
+:root{
+    --bg:#050505;
+    --surface:#101010;
+    --surface-light:#161616;
+
+    --slytherin-green:#1A472A;
+    --slytherin-green-light:#2A623D;
+
+    --slytherin-silver:#D3D3D3;
+    --slytherin-silver-dark:#AAAAAA;
+
+    --slytherin-gold:#8B6F3D;
+    --slytherin-gold-light:#B89B5E;
+
+    --text:#F5F5F5;
+    --muted:#A0A0A0;
+
+    --border:#242424;
+    --radius:20px;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+
+body{
+    font-family:'Cormorant Garamond',serif;
+    color:var(--text);
+    line-height:1.7;
+    background:
+    radial-gradient(circle at top, rgba(42,98,61,.18), transparent 35%),
+    radial-gradient(circle at bottom right, rgba(184,155,94,.08), transparent 45%),
+    var(--bg);
 }
 
-body {
-    background: radial-gradient(circle at top, #0f2a1d, #050505 80%);
-    color: var(--text);
-    font-family: 'Cormorant Garamond', serif;
-    line-height: 1.6;
+.container{
+    width:min(1200px,92%);
+    margin:auto;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
+section{padding:6rem 0;}
+
+.header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(5,5,5,.92);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);
 }
 
-ul {
-    list-style: none;
+.header .container{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:2rem;
+    padding:1rem 0;
 }
 
-h1, h2, h3 {
-    font-family: 'Cormorant Garamond', serif;
-    color: var(--silver-light);
-    font-weight: 600;
+.logo a,
+h1,h2,h3{
+    font-family:'Cinzel',serif;
 }
 
-h1 {
-    font-size: 3rem;
+.logo a{
+    text-decoration:none;
+    color:var(--slytherin-silver);
+    letter-spacing:3px;
 }
 
-h2 {
-    font-size: 2.2rem;
-    margin-bottom: 20px;
+.nav ul{
+    display:flex;
+    gap:2rem;
+    list-style:none;
 }
 
-p {
-    color: var(--silver);
-    font-size: 1.1rem;
-}
-
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: auto;
-}
-
-section {
-    margin-top: 80px;
-}
-
-.grid {
-    display: grid;
-    gap: 25px;
-}
-
-.grid-2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-}
-
-.header {
-    background: rgba(5, 5, 5, 0.9);
-    border-bottom: 1px solid var(--green);
-    backdrop-filter: blur(10px);
-}
-
-.header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 0;
-}
-
-.logo a {
-    color: var(--green-light);
-    font-size: 1.4rem;
-    font-weight: 600;
-}
-
-.nav ul {
-    display: flex;
-    gap: 25px;
-}
-
-.nav a {
-    position: relative;
+.nav a{
+    text-decoration:none;
+    color:var(--muted);
+    text-transform:uppercase;
 }
 
 .nav a:hover,
-.nav a.active {
-    color: var(--green-light);
+.nav a.active{
+    color:var(--slytherin-silver);
 }
 
-.nav a::after {
-    content: "";
-    position: absolute;
-    width: 0%;
-    height: 2px;
-    background: var(--green-light);
-    left: 0;
-    bottom: -4px;
-    transition: 0.3s;
+.hero{
+    text-align:center;
 }
 
-.nav a:hover::after {
-    width: 100%;
+.hero h1{
+    font-size:clamp(4rem,10vw,8rem);
+    margin:1rem 0;
+    background:linear-gradient(
+        180deg,
+        #ffffff,
+        var(--slytherin-silver),
+        var(--slytherin-gold)
+    );
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
 }
 
-.btn {
-    display: inline-block;
-    padding: 10px 18px;
-    border-radius: var(--radius);
-    border: 1px solid var(--green-light);
-    transition: 0.3s;
+.hero-badge{
+    display:inline-block;
+    padding:.7rem 1.2rem;
+    border-radius:999px;
+    border:1px solid var(--slytherin-gold);
+    color:var(--slytherin-silver);
+    background:rgba(42,98,61,.15);
 }
 
-.btn-primary {
-    background: var(--green);
-    color: white;
+.hero-subtitle{
+    color:var(--muted);
+    font-size:1.5rem;
 }
 
-.btn-primary:hover {
-    background: var(--green-light);
+.hero-grid{
+    display:grid;
+    grid-template-columns:1.2fr .8fr;
+    gap:4rem;
+    align-items:center;
 }
 
-.btn-secondary {
-    color: var(--green-light);
+.hero-tech,
+.technologies{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:.75rem;
+    margin-top:2rem;
 }
 
-.btn-secondary:hover {
-    background: var(--green-light);
-    color: white;
+.hero-tech span,
+.technologies span{
+    padding:.7rem 1rem;
+    border-radius:999px;
+    border:1px solid var(--slytherin-gold);
+    background:var(--surface);
 }
 
-.btn-outline {
-    color: var(--green-light);
+.hero-actions{
+    display:flex;
+    justify-content:center;
+    gap:1rem;
+    margin-top:2rem;
 }
 
-.btn-outline:hover {
-    background: var(--green-light);
-    color: white;
+.hero-visual{
+    display:flex;
+    justify-content:center;
 }
 
-.hero,
-.about-hero,
-.contact-hero {
-    text-align: center;
-    padding: 100px 0 60px;
+.serpent-circle{
+    width:320px;
+    height:320px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:radial-gradient(circle,var(--slytherin-green-light),var(--slytherin-green));
+    border:3px solid var(--slytherin-gold-light);
 }
 
-.hero p,
-.about-hero p,
-.contact-hero p {
-    max-width: 600px;
-    margin: 20px auto;
+.serpent-logo{
+    font-family:'Cinzel',serif;
+    font-size:5rem;
+    color:white;
 }
 
-.hero-actions {
-    margin-top: 20px;
-    display: flex;
-    gap: 15px;
-    justify-content: center;
+.btn{
+    text-decoration:none;
+    display:inline-block;
 }
 
-.card {
-    background: rgba(15, 42, 29, 0.6);
-    border: 1px solid rgba(192, 192, 192, 0.2);
-    padding: 25px;
-    border-radius: var(--radius);
-    transition: 0.3s;
-    backdrop-filter: blur(6px);
+.btn-primary{
+    padding:1rem 2rem;
+    border-radius:999px;
+    color:white;
+    border:1px solid var(--slytherin-gold-light);
+    background:linear-gradient(135deg,var(--slytherin-green),var(--slytherin-green-light));
 }
 
-.card:hover {
-    transform: translateY(-5px);
-    border-color: var(--green-light);
-    box-shadow: 0 0 15px rgba(46, 122, 78, 0.3);
+.btn-outline,
+.btn-secondary{
+    padding:1rem 2rem;
+    border-radius:999px;
+    border:1px solid var(--slytherin-silver);
+    color:var(--slytherin-silver);
 }
 
-.link {
-    display: inline-block;
-    margin-top: 10px;
-    color: var(--green-light);
+h2{
+    text-align:center;
+    color:var(--slytherin-silver);
+    margin-bottom:2rem;
 }
 
-.skills .grid,
-.contact-methods .grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+h2::after{
+    content:"";
+    display:block;
+    width:80px;
+    height:2px;
+    margin:1rem auto 0;
+    background:var(--slytherin-gold);
 }
 
-.info-list li,
-.skills-list li,
-.availability-list li {
-    margin-bottom: 10px;
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(192, 192, 192, 0.08);
+.grid,.stats-grid,.projects-grid{
+    display:grid;
+    gap:1.5rem;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 }
 
-.info-list li:last-child,
-.skills-list li:last-child {
-    border-bottom: none;
+.grid-2{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:1.5rem;
 }
 
-.about-content .grid-2 {
-    background: rgba(15, 42, 29, 0.4);
-    border: 1px solid rgba(192, 192, 192, 0.15);
-    border-radius: var(--radius);
-    overflow: hidden;
+.card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-top:2px solid var(--slytherin-gold);
+    border-radius:var(--radius);
+    padding:2rem;
 }
 
-.about-text,
-.about-details {
-    padding: 30px;
+.project-links{
+    display:flex;
+    gap:1rem;
+    flex-wrap:wrap;
+    margin-top:2rem;
 }
 
-.about-text {
-    border-right: 1px solid rgba(192, 192, 192, 0.15);
+.project-details ul,
+.availability-list{
+    list-style:none;
 }
 
-.about-text h2,
-.about-details h2 {
-    font-size: 1.5rem;
+.project-details li,
+.availability-list li{
+    padding:1rem 0;
+    border-bottom:1px solid var(--border);
 }
 
-.about-text h2:not(:first-child),
-.about-details h2:not(:first-child) {
-    margin-top: 25px;
-    padding-top: 15px;
-    border-top: 1px solid rgba(192, 192, 192, 0.1);
+.link{
+    color:var(--slytherin-gold-light);
+    text-decoration:none;
 }
 
-.cta {
-    background: linear-gradient(135deg, #0f2a1d, #1f5c3a);
-    text-align: center;
-    padding: 60px 20px;
-    margin-top: 80px;
+.cta,
+.contact-methods .card,
+.location .card,
+.availability .card{
+    text-align:center;
 }
 
-.footer {
-    background: #000;
-    border-top: 1px solid var(--green);
-    padding: 40px 0;
-    margin-top: 60px;
-    text-align: center;
+.footer{
+    border-top:1px solid var(--border);
 }
 
-.footer p {
-    color: #777;
+.footer .container{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:2rem 0;
 }
 
-@media (max-width: 900px) {
-    .grid-2 {
-        grid-template-columns: 1fr;
+.footer-links{
+    display:flex;
+    gap:1rem;
+}
+
+@media(max-width:1024px){
+    .hero-grid,
+    .grid-2{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:768px){
+    .header .container,
+    .footer .container{
+        flex-direction:column;
     }
 
-    .about-text {
-        border-right: none;
-        border-bottom: 1px solid rgba(192, 192, 192, 0.15);
+    .nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
     }
 
-    h1 {
-        font-size: 2.4rem;
+    .hero-actions{
+        flex-direction:column;
+    }
+
+    .grid,
+    .stats-grid,
+    .projects-grid{
+        grid-template-columns:1fr;
     }
 }
 
-@media (max-width: 768px) {
-
-    .header .container {
-        flex-direction: column;
-        gap: 12px;
+@media(max-width:480px){
+    .hero h1{
+        font-size:3rem;
     }
 
-    .nav {
-        width: 100%;
+    .serpent-circle{
+        width:220px;
+        height:220px;
     }
 
-    .nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px;
+    .serpent-logo{
+        font-size:3rem;
     }
 
-    .actions {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-    }
-
-    .btn-secondary {
-        width: 100%;
-        max-width: 200px;
-        text-align: center;
-    }
-
-    .hero-actions {
-        flex-direction: column;
+    .btn{
+        width:100%;
+        text-align:center;
     }
 }

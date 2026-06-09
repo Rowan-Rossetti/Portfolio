@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio de Rowan Rossetti, développeur web. Projets, compétences et contact.">
-    <title>Accueil | Rowan Rossetti</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+    <meta name="description" content="Portfolio de Rowan Rossetti, développeur web front-end passionné par la création d'expériences web modernes.">
+
+    <title>Rowan Rossetti | Développeur Web</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
@@ -20,13 +22,17 @@
             <ul>
                 <li><a href="./index.html" class="active">Accueil</a></li>
                 <li><a href="./pages/about_me.html">À propos</a></li>
+                <li><a href="./pages/projects.html">Projets</a></li>
                 <li><a href="./pages/contact.html">Contact</a></li>
             </ul>
         </nav>
 
         <div class="actions">
-            <a href="./assets/files/CV Rowan Rossetti.pdf" target="_blank" rel="noopener" class="btn btn-secondary">
-                CV
+            <a href="./assets/files/CV Rowan Rossetti.pdf"
+               target="_blank"
+               rel="noopener"
+               class="btn btn-secondary">
+                Télécharger mon CV
             </a>
         </div>
     </div>
@@ -34,75 +40,201 @@
 
 <main>
 
-    <section class="hero">
-        <div class="container">
-            <h1>Développeur web</h1>
-            <p>
-                Je conçois et développe des interfaces modernes, performantes et accessibles.
-                Mon objectif est de créer des expériences claires, efficaces et orientées utilisateur.
+<section class="hero">
+    <div class="container hero-grid">
+
+        <div class="hero-content">
+
+            <span class="hero-badge">
+                Développeur Web Front-End
+            </span>
+
+            <h1>Rowan Rossetti</h1>
+
+            <p class="hero-subtitle">
+                Je crée des expériences web modernes, élégantes et performantes.
             </p>
+
+            <p>
+                Passionné par le développement web, je conçois des interfaces
+                intuitives, accessibles et centrées sur l'utilisateur.
+                Mon objectif est de transformer des idées en solutions
+                numériques concrètes.
+            </p>
+
+            <div class="hero-tech">
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>JavaScript</span>
+                <span>Angular</span>
+                <span>Node.js</span>
+                <span>Git</span>
+            </div>
 
             <div class="hero-actions">
-                <a href="./pages/about_me.html" class="btn btn-primary">Découvrir mon profil</a>
-                <a href="./pages/contact.html" class="btn btn-outline">Me contacter</a>
+                <a href="./pages/projects.html" class="btn btn-primary">
+                    Voir mes projets
+                </a>
+
+                <a href="./pages/contact.html" class="btn btn-outline">
+                    Me contacter
+                </a>
+            </div>
+
+        </div>
+
+        <div class="hero-visual">
+            <div class="serpent-circle">
+                
+                <div class="serpent-logo">
+                    RR
+                </div>
+    
             </div>
         </div>
-    </section>
 
-    <section class="skills">
-        <div class="container">
-            <h2>Compétences</h2>
+    </div>
+</section>
 
-            <div class="grid">
-                <div class="card">
-                    <h3>Frontend</h3>
-                    <ul>
-                        <li>HTML5 / CSS3</li>
-                        <li>JavaScript</li>
-                        <li>Responsive design</li>
-                        <li>Accessibilité</li>
-                    </ul>
-                </div>
+<section class="stats">
+    <div class="container">
+        <div class="stats-grid">
 
-                <div class="card">
-                    <h3>Backend</h3>
-                    <ul>
-                        <li>Node.js</li>
-                        <li>API REST</li>
-                        <li>Bases de données</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h3>Outils</h3>
-                    <ul>
-                        <li>Git / GitHub</li>
-                        <li>VS Code</li>
-                        <li>Figma</li>
-                    </ul>
-                </div>
+            <div class="card">
+                <h3>Front-End</h3>
+                <p>Interfaces modernes, responsives et accessibles.</p>
             </div>
-        </div>
-    </section>
 
+            <div class="card">
+                <h3>Back-End</h3>
+                <p>Développement d'API et logique applicative.</p>
+            </div>
 
-    <section class="cta">
-        <div class="container">
-            <h2>Travaillons ensemble</h2>
-            <p>
-                Vous avez un projet ou une opportunité ? Je suis disponible pour en discuter.
-            </p>
-            <a href="./pages/contact.html" class="btn btn-primary">Entrer en contact</a>
+            <div class="card">
+                <h3>Performance</h3>
+                <p>Optimisation et expérience utilisateur.</p>
+            </div>
+
         </div>
-    </section>
+    </div>
+</section>
+
+<section class="skills">
+    <div class="container">
+
+        <h2>Compétences</h2>
+
+        <div class="grid">
+
+            <div class="card">
+                <h3>Développement Front-End</h3>
+                <p>HTML5, CSS3, JavaScript, Angular, Responsive Design.</p>
+            </div>
+
+            <div class="card">
+                <h3>Développement Back-End</h3>
+                <p>Node.js, Express.js, API REST et bases de données.</p>
+            </div>
+
+            <div class="card">
+                <h3>Outils</h3>
+                <p>Git, GitHub, VS Code, Figma et bonnes pratiques.</p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section class="featured-projects">
+    <div class="container">
+
+        <h2>Projet mis en avant</h2>
+
+        <div class="projects-grid">
+
+            <article class="card project-card">
+
+                <h3>Instachef</h3>
+
+                <p>
+                    Application Angular permettant d'améliorer
+                    l'organisation et la préparation des repas.
+                </p>
+
+                <div class="technologies">
+                    <span>Angular</span>
+                    <span>TypeScript</span>
+                    <span>Responsive</span>
+                </div>
+
+                <a href="./pages/projects.html"
+                   class="btn btn-primary">
+                    Découvrir
+                </a>
+
+            </article>
+
+        </div>
+
+    </div>
+</section>
+
+<section class="cta">
+
+    <div class="container">
+
+        <h2>Construisons quelque chose ensemble</h2>
+
+        <p>
+            Je suis actuellement à la recherche d'opportunités,
+            de stages et de collaborations dans le développement web.
+        </p>
+
+        <a href="./pages/contact.html"
+           class="btn btn-primary">
+            Entrer en contact
+        </a>
+
+    </div>
+
+</section>
 
 </main>
 
 <footer class="footer">
+
     <div class="container">
-        <p>&copy; 2026 Rowan Rossetti</p>
+
+        <p>
+            &copy; <span id="year"></span>
+            Rowan Rossetti — Tous droits réservés.
+        </p>
+
+        <div class="footer-links">
+
+            <a href="https://github.com/Rowan-Rossetti"
+               target="_blank"
+               rel="noopener">
+                GitHub
+            </a>
+
+            <a href="https://www.linkedin.com/in/rowan-rossetti-68b3292a2/"
+               target="_blank"
+               rel="noopener">
+                LinkedIn
+            </a>
+
+        </div>
+
     </div>
+
 </footer>
+
+<script>
+document.getElementById("year").textContent =
+new Date().getFullYear();
+</script>
 
 </body>
 </html>
