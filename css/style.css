@@ -453,3 +453,106 @@ h2{
         font-size:3rem;
     }
 }
+@media (max-width: 768px){
+
+    .hero-grid{
+        grid-template-columns:1fr;
+        gap:2rem;
+    }
+
+    .hero-content{
+        order:2;
+    }
+
+    .hero-visual{
+        order:1;
+    }
+
+    .hero h1{
+        font-size:clamp(2.5rem,12vw,4rem);
+        line-height:1.1;
+    }
+
+    .hero-subtitle{
+        font-size:1.1rem;
+    }
+
+    .hero-tech{
+        justify-content:center;
+    }
+
+    .hero-tech span{
+        font-size:.9rem;
+    }
+
+    .serpent-circle{
+        width:240px;
+        height:240px;
+    }
+
+    .nav ul{
+        gap:.75rem;
+    }
+
+    .nav a{
+        font-size:.9rem;
+    }
+
+    .header .container{
+        flex-direction:column;
+        text-align:center;
+        gap:1rem;
+    }
+}
+
+@media (max-width: 480px){
+
+    .container{
+        width:95%;
+    }
+
+    section{
+        padding:3rem 0;
+    }
+
+    .hero h1{
+        font-size:2.4rem;
+    }
+
+    .hero-subtitle{
+        font-size:1rem;
+    }
+
+    .hero-actions{
+        width:100%;
+    }
+
+    .hero-actions .btn,
+    .actions .btn{
+        width:100%;
+        text-align:center;
+    }
+
+    .hero-tech{
+        gap:.5rem;
+    }
+
+    .hero-tech span{
+        padding:.5rem .75rem;
+        font-size:.8rem;
+    }
+
+    .serpent-circle{
+        width:200px;
+        height:200px;
+    }
+
+    .card{
+        padding:1rem;
+    }
+
+    .footer-links{
+        flex-direction:column;
+        align-items:center;
+    }
+}
