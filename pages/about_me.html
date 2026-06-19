@@ -13,6 +13,11 @@
 
     <title>À propos | Rowan Rossetti</title>
 
+    <meta property="og:title" content="À propos | Rowan Rossetti">
+    <meta property="og:description" content="Découvrez le parcours, les compétences et les ambitions de Rowan Rossetti, développeur Front-End Junior.">
+    <meta property="og:locale" content="fr_FR">
+    <meta name="robots" content="index, follow">
+
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
@@ -35,7 +40,7 @@
 
         </div>
 
-        <nav class="nav">
+        <nav class="nav" aria-label="Navigation principale">
 
             <ul>
 
@@ -47,7 +52,8 @@
 
                 <li>
                     <a href="./about_me.html"
-                        class="active">
+                        class="active"
+                        aria-current="page">
                         À propos
                     </a>
                 </li>
@@ -85,7 +91,7 @@
 
 </header>
 
-<main>
+<main id="main-content">
 
 <section class="hero">
 
@@ -95,9 +101,7 @@
             Disponible immédiatement
         </span>
 
-        <h1>
-            Rowan Rossetti
-        </h1>
+        <h1 id="typing-about" aria-label="Rowan Rossetti - Développeur Front-End">Rowan Rossetti</h1>
 
         <p class="hero-job-title">
             Développeur Web Front-End Junior

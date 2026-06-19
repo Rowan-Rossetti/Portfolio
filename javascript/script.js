@@ -6,55 +6,66 @@ document.addEventListener('DOMContentLoaded', () => {
         year.textContent = new Date().getFullYear();
     }
 
-    // Animation machine à écrire - Accueil
-    const typing = document.getElementById('typing');
+    function typeWriterEffect(id, text, speed = 80) {
 
-    if (typing) {
+        const element = document.getElementById(id);
 
-        const text = "Développeur Web Front-End Junior";
+        if (!element) return;
+
+        element.textContent = "";
+
         let i = 0;
 
-        function typeWriter() {
+        function write() {
 
             if (i < text.length) {
 
-                typing.textContent += text.charAt(i);
+                element.textContent += text.charAt(i);
                 i++;
 
-                setTimeout(typeWriter, 60);
+                setTimeout(write, speed);
 
             }
 
         }
 
-        typeWriter();
+        write();
 
     }
 
-    // Animation machine à écrire - Projets
-    const typingTitle = document.getElementById('typing-title');
+    // Accueil
+    typeWriterEffect(
+        'typing',
+        'Développeur Web Front-End Junior',
+        60
+    );
 
-    if (typingTitle) {
+    typeWriterEffect(
+        'typing-home',
+        'Rowan Rossetti',
+        80
+    );
 
-        const text = "Mes projets";
-        let i = 0;
+    // À propos
+    typeWriterEffect(
+        'typing-about',
+        'Rowan Rossetti',
+        80
+    );
 
-        function typeWriterProjects() {
+    // Contact
+    typeWriterEffect(
+        'typing-contact',
+        'Contactez-moi',
+        80
+    );
 
-            if (i < text.length) {
-
-                typingTitle.textContent += text.charAt(i);
-                i++;
-
-                setTimeout(typeWriterProjects, 80);
-
-            }
-
-        }
-
-        typeWriterProjects();
-
-    }
+    // Projets
+    typeWriterEffect(
+        'typing-title',
+        'Mes projets',
+        80
+    );
 
     // Apparition progressive au scroll
     const reveals = document.querySelectorAll('.reveal');
