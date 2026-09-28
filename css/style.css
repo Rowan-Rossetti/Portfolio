@@ -55,3 +55,8 @@ html[dir="rtl"] .header-inner,html[dir="rtl"] .main-nav ul,html[dir="rtl"] .hero
   .main-nav .translate-icon{display:block}
   .main-nav .language-select{font-size:12px}
 }
+
+
+/* Mise à jour 2026-09-29 : sections centrées verticalement + icônes HTML/SVG */
+.html-icon,.inline-icon{width:1em;height:1em;display:inline-block;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.14em}.icon-box .html-icon,.contact-icon .html-icon{width:26px;height:26px}.translate-icon .html-icon{width:17px;height:17px}.btn .inline-icon,.text-link .inline-icon,.feature-card a .inline-icon,.contact-card b .inline-icon{width:15px;height:15px}.todo strong .html-icon{width:90px;height:90px;stroke-width:1;color:rgba(255,255,255,.12)}
+@media(min-width:821px){.section{min-height:100vh;display:flex;align-items:center}.section>.container{width:min(1180px,calc(100% - 40px))}.page-hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 70px}.cta-section{min-height:100vh;display:flex;align-items:center;padding:80px 0}.cta-section>.container{width:min(1180px,calc(100% - 40px))}}

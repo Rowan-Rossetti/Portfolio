@@ -19,64 +19,31 @@ function initPortfolioTranslation(){
   const control=document.querySelector('.translate-control');
   if(!select||!control)return;
 
-  const LANGUAGE_API_URL='https://libretranslate.com/languages';
+  // Liste intégrée : le menu reste disponible même si un service externe est indisponible.
+  const LANGUAGES=[
+    ['fr','Français'],['en','Anglais'],['nl','Néerlandais'],['de','Allemand'],
+    ['it','Italien'],['es','Espagnol'],['pt','Portugais'],['pl','Polonais'],
+    ['ro','Roumain'],['tr','Turc'],['ar','Arabe'],['ru','Russe'],
+    ['uk','Ukrainien'],['el','Grec'],['sv','Suédois'],['da','Danois'],
+    ['no','Norvégien'],['fi','Finnois'],['cs','Tchèque'],['hu','Hongrois'],
+    ['bg','Bulgare'],['hr','Croate'],['sk','Slovaque'],['sl','Slovène'],
+    ['et','Estonien'],['lv','Letton'],['lt','Lituanien'],['id','Indonésien'],
+    ['ja','Japonais'],['ko','Coréen'],['zh-CN','Chinois (simplifié)']
+  ];
 
-  const loadLanguages=async()=>{
-    select.disabled=true;
-    control.classList.add('is-loading');
-    const status=control.querySelector('.translate-status');
-    if(status)status.textContent='Chargement des langues…';
-
-    try{
-      const response=await fetch(LANGUAGE_API_URL,{headers:{Accept:'application/json'}});
-      if(!response.ok)throw new Error(`Language API error: ${response.status}`);
-      const data=await response.json();
-      if(!Array.isArray(data)||data.length===0)throw new Error('No languages returned');
-
-      const displayNames=typeof Intl!=='undefined'&&Intl.DisplayNames
-        ? new Intl.DisplayNames(['fr'],{type:'language'})
-        : null;
-
-      const languages=data
-        .filter(language=>language&&typeof language.code==='string'&&language.code.trim())
-        .map(language=>{
-          const code=language.code.trim();
-          let name=typeof language.name==='string'&&language.name.trim()?language.name.trim():code;
-          try{
-            const localized=displayNames?.of(code);
-            if(localized&&localized!==code)name=localized.charAt(0).toUpperCase()+localized.slice(1);
-          }catch{}
-          return {code,name};
-        })
-        .filter((language,index,array)=>array.findIndex(item=>item.code===language.code)===index)
-        .sort((a,b)=>a.name.localeCompare(b.name,'fr',{sensitivity:'base'}));
-
-      select.innerHTML='';
-      for(const {code,name} of languages){
-        const option=document.createElement('option');
-        option.value=code;
-        option.textContent=name;
-        select.appendChild(option);
-      }
-
-      if(!languages.some(language=>language.code==='fr')){
-        const option=document.createElement('option');
-        option.value='fr';
-        option.textContent='Français';
-        select.insertBefore(option,select.firstChild);
-      }
-
-      if(status)status.textContent='';
-      return true;
-    }catch(error){
-      console.error('Impossible de charger les langues depuis l’API.',error);
-      select.innerHTML='<option value="fr">Français</option>';
-      if(status)status.textContent='Langues indisponibles';
-      return false;
-    }finally{
-      select.disabled=false;
-      control.classList.remove('is-loading');
+  const loadLanguages=()=>{
+    const saved=localStorage.getItem('portfolioLanguage')||'fr';
+    select.innerHTML='';
+    for(const [code,name] of LANGUAGES){
+      const option=document.createElement('option');
+      option.value=code;
+      option.textContent=name;
+      select.appendChild(option);
     }
+    select.value=LANGUAGES.some(([code])=>code===saved)?saved:'fr';
+    select.disabled=false;
+    const status=control.querySelector('.translate-status');
+    if(status)status.textContent='';
   };
 
   const rtl=new Set(['ar','fa','he','ur','ps','sd','ug','yi','dv','ku']);
@@ -137,14 +104,7 @@ function initPortfolioTranslation(){
 
   select.addEventListener('change',()=>setLanguage(select.value));
 
-  loadLanguages().then(()=>{
-    const saved=localStorage.getItem('portfolioLanguage')||'fr';
-    if([...select.options].some(option=>option.value===saved)){
-      select.value=saved;
-      if(saved!=='fr')setLanguage(saved);
-    }else if([...select.options].some(option=>option.value==='fr')){
-      select.value='fr';
-      localStorage.setItem('portfolioLanguage','fr');
-    }
-  });
+  loadLanguages();
+  const saved=localStorage.getItem('portfolioLanguage')||'fr';
+  if(saved!=='fr'&&[...select.options].some(option=>option.value===saved))setLanguage(saved);
 }
