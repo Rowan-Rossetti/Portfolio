@@ -19,7 +19,6 @@ function initPortfolioTranslation(){
   const control=document.querySelector('.translate-control');
   if(!select||!control)return;
 
-  // Liste intégrée : le menu reste disponible même si un service externe est indisponible.
   const LANGUAGES=[
     ['fr','Français'],['en','Anglais'],['nl','Néerlandais'],['de','Allemand'],
     ['it','Italien'],['es','Espagnol'],['pt','Portugais'],['pl','Polonais'],
@@ -30,27 +29,33 @@ function initPortfolioTranslation(){
     ['et','Estonien'],['lv','Letton'],['lt','Lituanien'],['id','Indonésien'],
     ['ja','Japonais'],['ko','Coréen'],['zh-CN','Chinois (simplifié)']
   ];
-
-  const loadLanguages=()=>{
-    const saved=localStorage.getItem('portfolioLanguage')||'fr';
-    select.innerHTML='';
-    for(const [code,name] of LANGUAGES){
-      const option=document.createElement('option');
-      option.value=code;
-      option.textContent=name;
-      select.appendChild(option);
-    }
-    select.value=LANGUAGES.some(([code])=>code===saved)?saved:'fr';
-    select.disabled=false;
-    const status=control.querySelector('.translate-status');
-    if(status)status.textContent='';
-  };
-
+  const supported=new Set(LANGUAGES.map(([c])=>c));
   const rtl=new Set(['ar','fa','he','ur','ps','sd','ug','yi','dv','ku']);
   const originalTitle=document.title;
   const originalTexts=new Map();
-  const cache=new Map();
+  const memoryCache=new Map();
   const excludedSelector='script,style,noscript,select,option,textarea,input,code,pre,.sr-only';
+  const CACHE_PREFIX='portfolioTranslation:v3:';
+
+  // Détecte automatiquement la langue du navigateur au premier passage.
+  // Un choix manuel de l'utilisateur reste prioritaire lors des visites suivantes.
+  const normalizeLanguage=(raw)=>{
+    if(!raw)return 'fr';
+    const tag=String(raw).toLowerCase();
+    if(tag.startsWith('zh'))return 'zh-CN';
+    const base=tag.split('-')[0];
+    return supported.has(base)?base:'fr';
+  };
+  const savedChoice=localStorage.getItem('portfolioLanguageChoice');
+  const browserLanguage=normalizeLanguage((navigator.languages&&navigator.languages[0])||navigator.language||'fr');
+  const initialLanguage=savedChoice&&supported.has(savedChoice)?savedChoice:browserLanguage;
+
+  select.innerHTML='';
+  for(const [code,name] of LANGUAGES){
+    const option=document.createElement('option');
+    option.value=code;option.textContent=name;select.appendChild(option);
+  }
+  select.value=initialLanguage;select.disabled=false;
 
   const collectTextNodes=()=>{
     const nodes=[];
@@ -60,51 +65,75 @@ function initPortfolioTranslation(){
       if(parent.closest('.translate-control'))return NodeFilter.FILTER_REJECT;
       return NodeFilter.FILTER_ACCEPT;
     }});
-    let node;while((node=walker.nextNode())){if(!originalTexts.has(node))originalTexts.set(node,node.nodeValue);nodes.push(node)}
+    let node;while((node=walker.nextNode())){
+      if(!originalTexts.has(node))originalTexts.set(node,node.nodeValue);
+      nodes.push(node);
+    }
     return nodes;
+  };
+
+  const cacheKey=(target,text)=>CACHE_PREFIX+target+':'+text;
+  const getCached=(target,text)=>{
+    const k=target+'|'+text;
+    if(memoryCache.has(k))return memoryCache.get(k);
+    try{const v=localStorage.getItem(cacheKey(target,text));if(v){memoryCache.set(k,v);return v}}catch{}
+    return null;
+  };
+  const putCached=(target,text,value)=>{
+    memoryCache.set(target+'|'+text,value);
+    try{localStorage.setItem(cacheKey(target,text),value)}catch{}
   };
 
   const translateText=async(text,target)=>{
     const clean=text.trim();
     if(!clean||target==='fr')return clean;
-    const key=`${target}|${clean}`;if(cache.has(key))return cache.get(key);
+    const cached=getCached(target,clean);if(cached)return cached;
     const url=`https://api.mymemory.translated.net/get?q=${encodeURIComponent(clean)}&langpair=fr|${encodeURIComponent(target)}`;
-    const response=await fetch(url);
+    const response=await fetch(url,{cache:'force-cache'});
     if(!response.ok)throw new Error('Translation service unavailable');
     const data=await response.json();
     const translated=data?.responseData?.translatedText;
     if(!translated)throw new Error('No translation returned');
-    cache.set(key,translated);return translated;
+    putCached(target,clean,translated);return translated;
   };
 
-  const setLanguage=async(target)=>{
+  // Petit pool concurrent : beaucoup plus rapide que la traduction séquentielle,
+  // sans lancer des dizaines de requêtes simultanées.
+  const runPool=async(tasks,limit=10)=>{
+    let next=0;
+    const worker=async()=>{while(next<tasks.length){const i=next++;try{await tasks[i]()}catch{}}};
+    await Promise.all(Array.from({length:Math.min(limit,tasks.length)},worker));
+  };
+
+  const setLanguage=async(target,{remember=false}={})=>{
+    if(!supported.has(target))target='fr';
+    select.value=target;
     select.disabled=true;control.classList.add('is-translating');
     document.documentElement.lang=target;
     document.documentElement.dir=rtl.has(target)?'rtl':'ltr';
     const nodes=collectTextNodes();
+    if(remember)localStorage.setItem('portfolioLanguageChoice',target);
+
     if(target==='fr'){
       for(const node of nodes)node.nodeValue=originalTexts.get(node)??node.nodeValue;
-      document.title=originalTitle;localStorage.setItem('portfolioLanguage','fr');
+      document.title=originalTitle;
       select.disabled=false;control.classList.remove('is-translating');return;
     }
-    try{
-      for(let i=0;i<nodes.length;i+=6){
-        const group=nodes.slice(i,i+6);
-        await Promise.all(group.map(async node=>{
-          const original=originalTexts.get(node)??node.nodeValue;
-          const leading=original.match(/^\s*/)?.[0]||'';const trailing=original.match(/\s*$/)?.[0]||'';
-          const core=original.trim();
-          try{node.nodeValue=leading+await translateText(core,target)+trailing}catch{node.nodeValue=original}
-        }));
-      }
-      try{document.title=await translateText(originalTitle,target)}catch{document.title=originalTitle}
-      localStorage.setItem('portfolioLanguage',target);
-    }finally{select.disabled=false;control.classList.remove('is-translating')}
+
+    const tasks=nodes.map(node=>async()=>{
+      const original=originalTexts.get(node)??node.nodeValue;
+      const leading=original.match(/^\s*/)?.[0]||'';
+      const trailing=original.match(/\s*$/)?.[0]||'';
+      const core=original.trim();
+      try{node.nodeValue=leading+await translateText(core,target)+trailing}catch{node.nodeValue=original}
+    });
+    tasks.push(async()=>{try{document.title=await translateText(originalTitle,target)}catch{document.title=originalTitle}});
+    try{await runPool(tasks,10)}finally{select.disabled=false;control.classList.remove('is-translating')}
   };
 
-  select.addEventListener('change',()=>setLanguage(select.value));
+  select.addEventListener('change',()=>setLanguage(select.value,{remember:true}));
 
-  loadLanguages();
-  const saved=localStorage.getItem('portfolioLanguage')||'fr';
-  if(saved!=='fr'&&[...select.options].some(option=>option.value===saved))setLanguage(saved);
+  // Traduction automatique dès l'ouverture selon la langue détectée.
+  if(initialLanguage!=='fr')setLanguage(initialLanguage);
+  else{document.documentElement.lang='fr';document.documentElement.dir='ltr'}
 }
